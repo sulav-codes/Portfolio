@@ -42,6 +42,7 @@ export function FloatingActionButton() {
             <Button
               size="icon"
               onClick={scrollToTop}
+              aria-label="Scroll to top"
               className="rounded-full h-12 w-12 md:h-14 md:w-14 shadow-lg bg-primary hover:bg-primary/90"
             >
               <ArrowUp className="h-5 w-5 md:h-6 md:w-6" />

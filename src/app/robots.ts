@@ -32,21 +32,18 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "anthropic-ai",
         disallow: "/",
       },
-
       // Chat/Search Bots - Allow discovery and citation
       {
         userAgent: "PerplexityBot",
         allow: "/",
       },
-
       // Default rule - Allow everything else (search, social, etc.)
       {
         userAgent: "*",
-        allow: ["/", "/_next/"],
-        disallow: ["/api/", "/admin/", "/private/", "/*.json$", "/*?*"],
+        allow: "/",
+        disallow: ["/api/", "/admin/", "/private/"],
       },
     ],
     sitemap: "https://www.sulav-neupane.com.np/sitemap.xml",
-    host: "https://www.sulav-neupane.com.np",
   };
 }

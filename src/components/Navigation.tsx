@@ -134,6 +134,8 @@ export function Navigation() {
               size="icon"
               className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5" />
@@ -172,6 +174,7 @@ export function Navigation() {
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    aria-label="Close menu"
                     className="rounded-full"
                   >
                     <X className="h-6 w-6" />

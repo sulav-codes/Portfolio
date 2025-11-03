@@ -287,6 +287,7 @@ export function Hero() {
                 href="https://github.com/sulav-codes"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Sulav Neupane's GitHub profile"
                 className="p-2 sm:p-2.5 md:p-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-colors"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
@@ -297,6 +298,7 @@ export function Hero() {
                 href="https://linkedin.com/in/sulav-neupane"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Sulav Neupane's LinkedIn profile"
                 className="p-2 sm:p-2.5 md:p-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-colors"
                 whileHover={{ scale: 1.1, rotate: -5 }}
                 whileTap={{ scale: 0.95 }}
