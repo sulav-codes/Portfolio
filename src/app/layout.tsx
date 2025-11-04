@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -239,8 +240,8 @@ export default function RootLayout({
     inLanguage: "en-US",
   };
 
-  // FAQ schema is rendered only on the home page via FAQSchema component
-  // to avoid duplicate JSON-LD entries and ensure it appears exactly once.
+  // FAQ Schema removed from layout - it's only rendered on the home page (page.tsx)
+  // to avoid duplication on all pages
 
   // BreadcrumbList Schema
   const breadcrumbSchema = {
@@ -278,26 +279,26 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         {/* Structured Data Schemas */}
-        <script
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessSchema),
           }}
         />
-        <script
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
         />
-        <script
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <script
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        {/* FAQ JSON-LD intentionally removed from global layout to avoid duplicates. */}
-        <script
+        {/* FAQ Schema is rendered only on home page via page.tsx */}
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(breadcrumbSchema),

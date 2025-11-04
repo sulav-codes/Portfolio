@@ -1,25 +1,27 @@
-﻿import HomeClient from "./HomeClient";
+﻿import Script from "next/script";
+import HomeClient from "./HomeClient";
 
-// Server Component - renders FAQ schema once on the home page only
 export default function Home() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": "https://www.sulav-neupane.com.np/#faq",
+    url: "https://www.sulav-neupane.com.np",
     mainEntity: [
       {
         "@type": "Question",
-        name: "What services does Sulav Neupane offer as a Full Stack Developer?",
+        name: "What services does Sulav Neupane offer as a web developer?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sulav Neupane offers comprehensive full-stack web development services including frontend development with React, Next.js, and TypeScript, backend development with Node.js and Django, database design with MongoDB, PostgreSQL, and MySQL, API development, and complete web application development. He specializes in building modern, responsive, and scalable web applications.",
+          text: "Sulav Neupane offers full-stack web development services including custom website development, React and Next.js applications, TypeScript development, Node.js and Django backend development, API integration, database design (MySQL, MongoDB, PostgreSQL), responsive web design, and modern web application development.",
         },
       },
       {
         "@type": "Question",
-        name: "What technologies and frameworks does Sulav Neupane specialize in?",
+        name: "What technologies does Sulav Neupane specialize in?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sulav Neupane specializes in modern web technologies including React, Next.js, TypeScript, JavaScript, Node.js, Django, Python, MongoDB, PostgreSQL, MySQL, Tailwind CSS, and RESTful API development. He focuses on creating full-stack solutions with cutting-edge technologies.",
+          text: "Sulav specializes in frontend technologies like React, Next.js, TypeScript, JavaScript, Tailwind CSS, and Three.js. For backend development, he works with Node.js, Express, Django, and Python. His database expertise includes MySQL, MongoDB, and PostgreSQL. He's also proficient in Git, RESTful APIs, and modern web development tools.",
         },
       },
       {
@@ -27,23 +29,31 @@ export default function Home() {
         name: "Is Sulav Neupane available for freelance projects?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, Sulav Neupane is available for freelance web development projects. He offers services worldwide remotely and can be contacted through his portfolio website or email at sulavneupane1905@gmail.com for project inquiries and collaborations.",
+          text: "Yes, Sulav Neupane is currently available for freelance projects, full-time opportunities, and collaborative ventures in web development and software engineering. You can contact him via email at sulavneupane1905@gmail.com or connect through LinkedIn, GitHub, or Instagram.",
         },
       },
       {
         "@type": "Question",
-        name: "Where is Sulav Neupane based and does he work remotely?",
+        name: "Where is Sulav Neupane based?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sulav Neupane is based in Nepal and works remotely with clients worldwide. He provides full-stack web development services to international clients across different time zones, ensuring flexible collaboration and communication throughout the project lifecycle.",
+          text: "Sulav Neupane is based in Nepal and offers web development services globally through remote collaboration. He works with clients worldwide, leveraging modern communication tools and project management practices.",
         },
       },
       {
         "@type": "Question",
-        name: "What makes Sulav Neupane's portfolio unique?",
+        name: "What makes Sulav Neupane stand out as a web developer?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sulav Neupane's portfolio showcases a diverse range of projects demonstrating expertise in both frontend and backend development. His work includes modern web applications built with cutting-edge technologies, creative problem-solving approaches, and a strong focus on user experience, performance optimization, and code quality. He also brings creative interests in photography and music to his technical work.",
+          text: "Sulav brings a unique combination of technical expertise in both frontend and backend development, creative problem-solving skills, and a passion for building efficient and user-friendly applications. He emphasizes clean code, scalable architecture, and continuous learning to stay updated with the latest web development trends.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What kind of projects has Sulav Neupane worked on?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sulav has worked on various projects showcasing full-stack development skills, including modern web applications, e-commerce platforms, creative projects using Three.js for 3D graphics, and applications integrating RESTful APIs. His portfolio demonstrates expertise in building scalable, efficient, and visually appealing solutions.",
         },
       },
     ],
@@ -51,9 +61,13 @@ export default function Home() {
 
   return (
     <>
-      <script
+      <Script
+        id="faq-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+        strategy="beforeInteractive"
       />
       <HomeClient />
     </>
