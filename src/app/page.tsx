@@ -1,94 +1,61 @@
-"use client";
+﻿import HomeClient from "./HomeClient";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Navigation } from "@/components/Navigation";
-import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Projects } from "@/components/sections/Projects";
-import { Gallery } from "@/components/sections/Gallery";
-import { Contact } from "@/components/sections/Contact";
-import { Footer } from "@/components/sections/Footer";
-import { FloatingActionButton } from "@/components/FloatingActionButton";
-import { LoadingScreen } from "@/components/LoadingScreen";
-import { EasterEggs } from "@/components/EasterEggs";
-import { SocialShare } from "@/components/SocialShare";
-import SEO from "@/components/SEO";
-import FAQSchema from "@/components/FAQSchema";
-
+// Server Component - renders FAQ schema once on the home page only
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    // Wait for loading screen to finish and content to be ready
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 3300); // Sync with loading screen timing
-
-    return () => clearTimeout(timer);
-  }, []);
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What services does Sulav Neupane offer as a Full Stack Developer?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sulav Neupane offers comprehensive full-stack web development services including frontend development with React, Next.js, and TypeScript, backend development with Node.js and Django, database design with MongoDB, PostgreSQL, and MySQL, API development, and complete web application development. He specializes in building modern, responsive, and scalable web applications.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What technologies and frameworks does Sulav Neupane specialize in?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sulav Neupane specializes in modern web technologies including React, Next.js, TypeScript, JavaScript, Node.js, Django, Python, MongoDB, PostgreSQL, MySQL, Tailwind CSS, and RESTful API development. He focuses on creating full-stack solutions with cutting-edge technologies.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is Sulav Neupane available for freelance projects?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, Sulav Neupane is available for freelance web development projects. He offers services worldwide remotely and can be contacted through his portfolio website or email at sulavneupane1905@gmail.com for project inquiries and collaborations.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where is Sulav Neupane based and does he work remotely?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sulav Neupane is based in Nepal and works remotely with clients worldwide. He provides full-stack web development services to international clients across different time zones, ensuring flexible collaboration and communication throughout the project lifecycle.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What makes Sulav Neupane's portfolio unique?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sulav Neupane's portfolio showcases a diverse range of projects demonstrating expertise in both frontend and backend development. His work includes modern web applications built with cutting-edge technologies, creative problem-solving approaches, and a strong focus on user experience, performance optimization, and code quality. He also brings creative interests in photography and music to his technical work.",
+        },
+      },
+    ],
+  };
 
   return (
     <>
-      <SEO />
-      <FAQSchema />
-      <LoadingScreen />
-      <EasterEggs />
-      <AnimatePresence>
-        {isLoaded && (
-          <motion.main
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            className="min-h-screen"
-          >
-            <Navigation />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-            >
-              <Hero />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              <About />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-            >
-              <Projects />
-            </motion.div>
-            {/* <Gallery /> */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6 }}
-            >
-              <Contact />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <Footer />
-            </motion.div>
-            <FloatingActionButton />
-            <SocialShare />
-          </motion.main>
-        )}
-      </AnimatePresence>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <HomeClient />
     </>
   );
 }
